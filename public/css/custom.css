@@ -1,0 +1,89 @@
+.product-title{
+
+}
+.product-gallery{
+    width: 100%;
+    height:360px;
+    border:1px darkgrey solid;
+    border-radius: 5px;
+    padding:10px;
+    margin-bottom: 10px;
+}
+hr{
+    border:0;
+    color: darkgrey;
+    background-color: darkgrey;
+    height: 1px;
+    width:100%;
+}
+img.thumbnail{
+    padding:3px;
+    margin-right:5px;
+    border:1px darkgrey solid;
+}
+.product-body{
+    margin-left:10px;
+    padding-right:10px;
+    text-align: justify;
+    font-size:1.1em;
+    line-height: 1.5em;
+}
+.sidebar-tab{
+    border-radius: 5px;
+    padding:10px;
+    border:1px solid lightgrey;
+    margin-bottom: 10px;
+    color:grey;
+}
+.sidebar-tab-special{
+    background-color: whitesmoke;
+}
+.sidebar-tab-title{
+    color: grey;
+    font-size: 1.2em;
+    font-weight: bold;
+    display:block;
+}
+.btn-book-now{
+    width:100%;
+    height:50px;
+    line-height: 40px;
+    padding:5px;
+    display:block;
+    background-color: limegreen;
+    color:white;
+    text-align: center;
+    font-weight: 900;
+    border-radius:5px;
+    box-shadow: 0px 5px 0px darkgreen;
+    font-size:1.5em;
+}
+a.btn-book-now:hover{
+    background-color: yellowgreen;
+    color:white;
+    text-decoration: none;
+}
+.navbar-fix{
+    margin-top: 75px;
+}
+
+.sidebar{
+    list-style-type: none;
+    padding: 0px;
+}
+.sidebar-menu{
+    color:lightgrey;
+    width:100%;
+    height:40px;
+    line-height: 40px;
+    border-bottom: 1px ridge #444444;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.sidebar-active{
+    background-color: black;
+    border-right: 4px solid red;
+}
+
+
+html,body { height: 100%; margin: 0px; padding: 0px; background-color: whitesmoke}

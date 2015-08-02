@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - tripAdviser@localhost" uuid="ce7aab3c-2e4a-4333-89e2-ac0323470efa">
+    <database-info product="MySQL" version="5.6.24" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <schema name="" catalog="tripAdviser"/>
+    <table name="addresses" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="line1" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="line2" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="houseNo" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="city" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="State" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="country" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="pinCode" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="type" sqlType="ENUM" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="phoneNo" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="userId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="addresses_userid_foreign" columns="userId" ref-table="users" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <exported-key name="cart_billingaddressid_foreign" table="cart" schema="" catalog="tripAdviser" columns="billingAddressId"/>
+      <exported-key name="cart_shippingaddressid_foreign" table="cart" schema="" catalog="tripAdviser" columns="shippingAddressId"/>
+      <index name="addresses_userid_foreign" unique="false" columns="userId"/>
+    </table>
+    <table name="availability" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="productId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="quantity" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="availability_productid_foreign" columns="productId" ref-table="products" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="availability_productid_foreign" unique="false" columns="productId"/>
+    </table>
+    <table name="cart" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="customerId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="shippingAddressId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="billingAddressId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="status" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="cart_billingaddressid_foreign" columns="billingAddressId" ref-table="addresses" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="cart_customerid_foreign" columns="customerId" ref-table="users" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="cart_shippingaddressid_foreign" columns="shippingAddressId" ref-table="addresses" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <exported-key name="orders_cartid_foreign" table="orders" schema="" catalog="tripAdviser" columns="cartId"/>
+      <index name="cart_billingaddressid_foreign" unique="false" columns="billingAddressId"/>
+      <index name="cart_customerid_foreign" unique="false" columns="customerId"/>
+      <index name="cart_shippingaddressid_foreign" unique="false" columns="shippingAddressId"/>
+    </table>
+    <table name="categories" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="imageId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="productcategory_categoryid_foreign" table="productCategory" schema="" catalog="tripAdviser" columns="categoryId"/>
+    </table>
+    <table name="chat" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="customerId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="chat" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="direction" sqlType="ENUM" precision="9" scale="0" nullable="false" jdbcType="1"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="chat_customerid_foreign" columns="customerId" ref-table="users" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="chat_customerid_foreign" unique="false" columns="customerId"/>
+    </table>
+    <table name="cities" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="country" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="imageId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="products_cityid_foreign" table="products" schema="" catalog="tripAdviser" columns="cityId"/>
+    </table>
+    <table name="currencies" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="symbol" sqlType="CHAR" precision="3" scale="0" nullable="true" jdbcType="1"/>
+      <column name="rate" sqlType="DOUBLE" precision="8" scale="2" nullable="false" jdbcType="8" def="MS4wMA=="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="products_currencyid_foreign" table="products" schema="" catalog="tripAdviser" columns="currencyId"/>
+    </table>
+    <table name="emailTemplates" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="subject" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="body" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="galleries" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="galleryimages_galleryid_foreign" table="galleryImages" schema="" catalog="tripAdviser" columns="galleryId"/>
+    </table>
+    <table name="galleryImages" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="galleryId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="imageId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <foreign-key name="galleryimages_galleryid_foreign" columns="galleryId" ref-table="galleries" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="galleryimages_imageid_foreign" columns="imageId" ref-table="images" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="galleryimages_galleryid_index" unique="false" columns="galleryId"/>
+      <index name="galleryimages_imageid_index" unique="false" columns="imageId"/>
+    </table>
+    <table name="images" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="url" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="galleryimages_imageid_foreign" table="galleryImages" schema="" catalog="tripAdviser" columns="imageId"/>
+      <exported-key name="productimages_imageid_foreign" table="productImages" schema="" catalog="tripAdviser" columns="imageId"/>
+    </table>
+    <table name="inbox" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="subject" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="body" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="customerId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="emailId" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="direction" sqlType="ENUM" precision="9" scale="0" nullable="false" jdbcType="1"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="inbox_customerid_foreign" columns="customerId" ref-table="users" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="inbox_customerid_foreign" unique="false" columns="customerId"/>
+    </table>
+    <table name="languages" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="language" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="label" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="symbol" sqlType="VARCHAR" precision="3" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="stringlist_languageid_foreign" table="stringList" schema="" catalog="tripAdviser" columns="languageId"/>
+    </table>
+    <table name="leads" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="fullName" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="package" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="menu" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="menuitems_menuid_foreign" table="menuItems" schema="" catalog="tripAdviser" columns="menuId"/>
+    </table>
+    <table name="menuItems" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="link" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="parentId" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="menuId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="menuitems_menuid_foreign" columns="menuId" ref-table="menu" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="menuitems_menuid_foreign" unique="false" columns="menuId"/>
+    </table>
+    <table name="migrations" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="migration" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="batch" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+    </table>
+    <table name="orderDetails" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="orderId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="fullName" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="age" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="orderdetails_orderid_foreign" columns="orderId" ref-table="orders" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="orderdetails_orderid_foreign" unique="false" columns="orderId"/>
+    </table>
+    <table name="orders" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="productId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="cartId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="adults" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="children" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="price" sqlType="DOUBLE" precision="8" scale="2" nullable="false" jdbcType="8" def="MC4wMA=="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="orders_cartid_foreign" columns="cartId" ref-table="cart" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="orders_productid_foreign" columns="productId" ref-table="products" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <exported-key name="orderdetails_orderid_foreign" table="orderDetails" schema="" catalog="tripAdviser" columns="orderId"/>
+      <exported-key name="productorder_orderid_foreign" table="productOrder" schema="" catalog="tripAdviser" columns="orderId"/>
+      <index name="orders_cartid_foreign" unique="false" columns="cartId"/>
+      <index name="orders_productid_foreign" unique="false" columns="productId"/>
+    </table>
+    <table name="password_resets" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="token" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <index name="password_resets_email_index" unique="false" columns="email"/>
+      <index name="password_resets_token_index" unique="false" columns="token"/>
+    </table>
+    <table name="phone" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="customerId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="note" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="phone_customerid_foreign" columns="customerId" ref-table="users" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="phone_customerid_foreign" unique="false" columns="customerId"/>
+    </table>
+    <table name="productCategory" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="productId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="categoryId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <foreign-key name="productcategory_categoryid_foreign" columns="categoryId" ref-table="categories" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="productcategory_productid_foreign" columns="productId" ref-table="products" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="productcategory_categoryid_index" unique="false" columns="categoryId"/>
+      <index name="productcategory_productid_index" unique="false" columns="productId"/>
+    </table>
+    <table name="productImages" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="productId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="imageId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <foreign-key name="productimages_imageid_foreign" columns="imageId" ref-table="images" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="productimages_productid_foreign" columns="productId" ref-table="products" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="productimages_imageid_index" unique="false" columns="imageId"/>
+      <index name="productimages_productid_index" unique="false" columns="productId"/>
+    </table>
+    <table name="productOrder" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="productId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="orderId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <foreign-key name="productorder_orderid_foreign" columns="orderId" ref-table="orders" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="productorder_productid_foreign" columns="productId" ref-table="products" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="productorder_orderid_index" unique="false" columns="orderId"/>
+      <index name="productorder_productid_index" unique="false" columns="productId"/>
+    </table>
+    <table name="productTag" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="productId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="tagId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <foreign-key name="producttag_productid_foreign" columns="productId" ref-table="products" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="producttag_tagid_foreign" columns="tagId" ref-table="tags" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="producttag_productid_index" unique="false" columns="productId"/>
+      <index name="producttag_tagid_index" unique="false" columns="tagId"/>
+    </table>
+    <table name="products" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="SKU" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="price" sqlType="DOUBLE" precision="8" scale="2" nullable="false" jdbcType="8" def="MC4wMA=="/>
+      <column name="currencyId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="publishDate" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="coverImageId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="videoUrl" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cityId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="vendorId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="active" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="products_cityid_foreign" columns="cityId" ref-table="cities" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="products_currencyid_foreign" columns="currencyId" ref-table="currencies" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="products_vendorid_foreign" columns="vendorId" ref-table="users" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <exported-key name="availability_productid_foreign" table="availability" schema="" catalog="tripAdviser" columns="productId"/>
+      <exported-key name="orders_productid_foreign" table="orders" schema="" catalog="tripAdviser" columns="productId"/>
+      <exported-key name="productcategory_productid_foreign" table="productCategory" schema="" catalog="tripAdviser" columns="productId"/>
+      <exported-key name="productimages_productid_foreign" table="productImages" schema="" catalog="tripAdviser" columns="productId"/>
+      <exported-key name="productorder_productid_foreign" table="productOrder" schema="" catalog="tripAdviser" columns="productId"/>
+      <exported-key name="producttag_productid_foreign" table="productTag" schema="" catalog="tripAdviser" columns="productId"/>
+      <exported-key name="reviews_productid_foreign" table="reviews" schema="" catalog="tripAdviser" columns="productId"/>
+      <exported-key name="stringlist_productid_foreign" table="stringList" schema="" catalog="tripAdviser" columns="productId"/>
+      <index name="products_sku_unique" unique="true" columns="SKU"/>
+      <index name="products_cityid_foreign" unique="false" columns="cityId"/>
+      <index name="products_currencyid_foreign" unique="false" columns="currencyId"/>
+      <index name="products_vendorid_foreign" unique="false" columns="vendorId"/>
+    </table>
+    <table name="reviews" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="customerId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="productId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="comment" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="rating" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="reviews_customerid_foreign" columns="customerId" ref-table="users" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="reviews_productid_foreign" columns="productId" ref-table="products" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="reviews_customerid_foreign" unique="false" columns="customerId"/>
+      <index name="reviews_productid_foreign" unique="false" columns="productId"/>
+    </table>
+    <table name="roles" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="users_roleid_foreign" table="users" schema="" catalog="tripAdviser" columns="roleId"/>
+      <index name="roles_title_unique" unique="true" columns="title"/>
+    </table>
+    <table name="stringList" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="alias" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="description" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="productId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="languageId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="stringlist_languageid_foreign" columns="languageId" ref-table="languages" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="stringlist_productid_foreign" columns="productId" ref-table="products" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <index name="stringlist_alias_unique" unique="true" columns="alias"/>
+      <index name="stringlist_languageid_foreign" unique="false" columns="languageId"/>
+      <index name="stringlist_productid_foreign" unique="false" columns="productId"/>
+    </table>
+    <table name="tags" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="tag" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="producttag_tagid_foreign" table="productTag" schema="" catalog="tripAdviser" columns="tagId"/>
+    </table>
+    <table name="users" schema="" catalog="tripAdviser" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="firstName" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="lastName" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="fbid" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="gid" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="avatar" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="roleId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="remember_token" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="users_roleid_foreign" columns="roleId" ref-table="roles" ref-schema="" ref-catalog="tripAdviser" ref-columns="id" update-rule="3" delete-rule="2" deferrability="2"/>
+      <exported-key name="addresses_userid_foreign" table="addresses" schema="" catalog="tripAdviser" columns="userId"/>
+      <exported-key name="cart_customerid_foreign" table="cart" schema="" catalog="tripAdviser" columns="customerId"/>
+      <exported-key name="chat_customerid_foreign" table="chat" schema="" catalog="tripAdviser" columns="customerId"/>
+      <exported-key name="inbox_customerid_foreign" table="inbox" schema="" catalog="tripAdviser" columns="customerId"/>
+      <exported-key name="phone_customerid_foreign" table="phone" schema="" catalog="tripAdviser" columns="customerId"/>
+      <exported-key name="products_vendorid_foreign" table="products" schema="" catalog="tripAdviser" columns="vendorId"/>
+      <exported-key name="reviews_customerid_foreign" table="reviews" schema="" catalog="tripAdviser" columns="customerId"/>
+      <index name="users_email_unique" unique="true" columns="email"/>
+      <index name="users_roleid_foreign" unique="false" columns="roleId"/>
+    </table>
+  </data-source>
+</component>

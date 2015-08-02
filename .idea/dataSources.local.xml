@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - tripAdviser@localhost" uuid="ce7aab3c-2e4a-4333-89e2-ac0323470efa">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>tripAdviser.*</schema-pattern>
+      <default-schemas>tripAdviser.*</default-schemas>
+    </data-source>
+  </component>
+</project>
