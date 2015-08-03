@@ -15,4 +15,7 @@ class addresses extends Model
     {
         return $this->belongsTo('App\User', 'userId');
     }
+    public static function getEagerLoad($id){
+        return reviews::with('user')->find($id);
+    }
 }

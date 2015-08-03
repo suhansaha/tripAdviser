@@ -13,4 +13,7 @@ class languages extends Model
     public function strings(){
         return $this->hasMany('App\stringList','stringListId');
     }
+    public static function getEagerLoad($id){
+        return languages::with('strings')->find($id);
+    }
 }

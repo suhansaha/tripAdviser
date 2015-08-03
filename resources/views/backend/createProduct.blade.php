@@ -3,7 +3,13 @@
 
 
 @section('body')
+
 <div class="col-md-12">
+<?php 
+foreach(\App\Roles::all() as $currency){
+  echo $currency->title;
+}
+?>
 {!! Form::open(['url' => 'admin/products','class'=>'form-horizontal','files' => true]) !!}
 
 <div class="form-group col-md-6">

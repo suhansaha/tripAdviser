@@ -13,4 +13,7 @@ class currencies extends Model
     public function products(){
         return $this->hasMany('App\products','currencyId');
     }
+    public static function getEagerLoad($id){
+        return currencies::with('products')->find($id);
+    }
 }

@@ -8,6 +8,7 @@ class stringList extends Model
 {
     protected $table = 'stringList';
     protected $fillable = ['title','description','productId','languageId'];
+    protected $hidden = ['productId','languageId'];
     public $timestamps = false;
 
     public function language()
@@ -17,5 +18,8 @@ class stringList extends Model
     public function product()
     {
         return $this->belongsTo('App\products', 'productId');
+    }
+    public static function getEagerLoad($id){
+        return stringList::with('language','product')->find($id);
     }
 }

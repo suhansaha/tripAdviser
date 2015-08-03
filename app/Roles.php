@@ -13,4 +13,10 @@ class Roles extends Model
     public function users(){
         return $this->hasMany('App\User','roleId');
     }
+    public static function getEagerLoad($id){
+        if($id)
+          return Roles::find($id);
+        else
+          return Roles::all();
+    }
 }

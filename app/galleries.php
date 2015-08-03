@@ -12,4 +12,8 @@ class galleries extends Model
     public function images(){
         return $this->belongsToMany('App\images','galleryImages','imageId','galleryId');
     }
+    
+    public static function getEagerLoad($id){
+        return galleries::with('images')->find($id);
+    }
 }

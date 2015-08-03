@@ -101,7 +101,8 @@ class adminController extends Controller
         }else{
             $tableClass = "\\App\\" . $table;
         }
-        return $tableClass::find($id)->load('role');
+        //return $tableClass::find($id);
+        return $tableClass::getEagerLoad($id);
     }
     /**
      * Display the specified resource.

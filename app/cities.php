@@ -8,6 +8,7 @@ class cities extends Model
 {
     protected $table = 'cities';
     protected $fillable = ['name','country','imageId'];
+    protected $hidden = ['imageId'];
     public $timestamps = false;
 
     public function products(){
@@ -15,5 +16,8 @@ class cities extends Model
     }
     public function image(){
         return $this->belongsTo('App\images','imageId');
+    }
+    public static function getEagerLoad($id){
+        return reviews::with('products','image')->find($id);
     }
 }

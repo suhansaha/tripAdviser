@@ -13,4 +13,7 @@ class phone extends Model
     {
         return $this->belongsTo('App\User', 'customerId');
     }
+    public static function getEagerLoad($id){
+        return phone::find($id);
+    }
 }

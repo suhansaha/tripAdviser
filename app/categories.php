@@ -16,4 +16,8 @@ class categories extends Model
     public function image(){
         return $this->belongsTo('App\images','imageId');
     }
+    
+    public static function getEagerLoad($id){
+        return reviews::with('products','image')->find($id);
+    }
 }

@@ -10,6 +10,7 @@ class products extends Model
     protected $fillable = ['SKU','price','currencyId','publishDate','coverImageId',
         'videoUrl','cityId','vendorId','active'];
     public $timestamps = false;
+    protected $hidden = ['currencyId','coverImageId','cityId','vendorId'];
 
     public function text()
     {
@@ -52,6 +53,10 @@ class products extends Model
     }
     public function images(){
         return $this->belongsToMany('App\images','productOrder','imageId','productId');
+    }
+    
+    public static function getEagerLoad($id){
+        return products::with('text','currency','coverImage','city','availabilities','vendor','categories','tags','images')->find($id);
     }
 
 }

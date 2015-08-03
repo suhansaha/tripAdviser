@@ -31,7 +31,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $hidden = ['password', 'remember_token','fbid','gid','created_at','updated_at'];
+    protected $hidden = ['password', 'remember_token','fbid','gid','created_at','updated_at','roleId'];
 
     public function role()
     {
@@ -59,5 +59,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function products()
     {
         return $this->hasMany('App\products', 'vendorId');
+    }
+    public static function getEagerLoad($id){
+      return User::with('role','contacts','chats','emails','phones','carts','reviews','products')->find($id);
     }
 }

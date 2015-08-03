@@ -13,4 +13,7 @@ class tags extends Model
     public function products(){
         return $this->belongsToMany('App\products','productTag','tagId', 'productId');
     }
+    public static function getEagerLoad($id){
+        return tags::find($id);
+    }
 }

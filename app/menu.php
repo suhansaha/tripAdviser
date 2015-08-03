@@ -14,4 +14,7 @@ class menu extends Model
     {
         return $this->hasMany('App\menuItems', 'menuId');
     }
+    public static function getEagerLoad($id){
+        return menu::with('menuItems')->find($id);
+    }
 }
