@@ -9,6 +9,10 @@ use App\Http\Controllers\Controller;
 
 class productController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     public function create(){
         return view('backend.createProduct');
     }

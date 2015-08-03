@@ -35,14 +35,18 @@
     {!! Form::select('vendor',['soma'=>'soma','suhan'=>'suhan'],null,['class'=>'form-control']) !!}
 </div>
 <div class="form-group col-md-4" style="margin-left: 15px">
-    {!! Form::label('Tag') !!}
-    {!! Form::text('tag',null,['placeholder'=>'Tag','class'=>'form-control']) !!}
+    {!! Form::label('City') !!}
+    {!! Form::select('city',['Bangalore'=>'Bangalore','Munich'=>'Munich'],null,['class'=>'form-control']) !!}
 </div>
 <div id="datetimepicker5" class="col-md-4" style="margin-left: 15px">
     <div class="form-group">
         {!! Form::label('Publish Date') !!}
         {!! Form::text('publishDate',null, ['data-format'=>'dd-MM-yyyy', 'class'=>'form-control add-on', 'placeholder'=>'Publish Date']) !!}
     </div>
+</div>
+<div class="form-group col-md-12">
+    {!! Form::label('Tag') !!}
+    {!! Form::text('tag',null,['placeholder'=>'Tag','class'=>'form-control']) !!}
 </div>
 <div class="form-group col-md-12">
     {!! Form::label('Cover Image') !!}

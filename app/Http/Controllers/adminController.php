@@ -12,6 +12,10 @@ use App\User;
 
 class adminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +30,7 @@ class adminController extends Controller
             $tableData = $dbTable::all();
             $dbModel = new $dbTable;
             $fillables = $dbModel->getFillable();
-            return view('backend.crude',["table" => $tableData,"tableName"=>$tableName,"fillables"=>$fillables]);
+            return view('backend.index',["table" => $tableData,"tableName"=>$tableName,"fillables"=>$fillables]);
         }else{
             abort(404);
         }
@@ -37,9 +41,19 @@ class adminController extends Controller
      *
      * @return Response
      */
-    public function create($page)
+    public function create($tableName)
     {
-        return $this->index($page);
+        $table = ucfirst($tableName);
+        $dbTable =  'App\\'.$table;
+
+        if (class_exists($dbTable)) {
+            $tableData = $dbTable::all();
+            $dbModel = new $dbTable;
+            $fillables = $dbModel->getFillable();
+            return view('backend.create',["table" => $tableData,"tableName"=>$tableName,"fillables"=>$fillables]);
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -87,7 +101,7 @@ class adminController extends Controller
         }else{
             $tableClass = "\\App\\" . $table;
         }
-        return $tableClass::find($id);
+        return $tableClass::find($id)->load('role');
     }
     /**
      * Display the specified resource.

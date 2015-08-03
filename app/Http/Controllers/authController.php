@@ -14,12 +14,12 @@ class authController extends Controller
 
         if (Auth::attempt(['email' => $request->email,'password'=>$request->password])) {
             // Authentication passed...
-            return Redirect::back();
+            return redirect()->back();
         }
 
         $showModal = 'true';
         $message = '';
-        return Redirect::back()->with('showModal',$showModal)->with('message',$message);
+        return redirect()->back()->with('showModal',$showModal)->with('message',$message);
     }
     public function callback($driver, \App\AuthenticateUser $authenticateUser, Request $request){
         //return "Login using ".$driver;
