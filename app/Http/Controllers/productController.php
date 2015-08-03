@@ -14,6 +14,9 @@ class productController extends Controller
     }
     public function store(Request $request)
     {
+        if($request->hasFile('coverImage') && $request->file('coverImage')->isValid()){
+            $request->file('coverImage')->move('images',$request->file('coverImage')->getClientOriginalName());
+        }
         dd($request->all());
         return "Suhan Saha";
     }

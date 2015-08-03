@@ -3,26 +3,70 @@
 
 
 @section('body')
-    <!-- Make sure the path to CKEditor is correct. -->
-{!! Form::open(array('url' => 'admin/products','class'=>'form-horizontal')) !!}
-{!! Form::text('sku',null,['placeholder'=>'SKU','class'=>'form-control']) !!}
-{!! Form::text('price',null,['placeholder'=>'Price','class'=>'form-control']) !!}
-{!! Form::select('currency',['€'=>'Euro','$'=>'USD'],null,['class'=>'form-control']) !!}
-{!! Form::text('title',null,['placeholder'=>'Title','class'=>'form-control']) !!}
-{!! Form::text('alias',null,['placeholder'=>'Alias','class'=>'form-control']) !!}
-{!! Form::textarea('description','This is my textarea to be replaced with CKEditor.',['size'=>'80x10','id'=>'description']) !!}
-{!! Form::select('city',['Munich'=>'Munich','Bangalore'=>'Bangalore'],null,['class'=>'form-control']) !!}
-<div id="datetimepicker5">
-{!! Form::text('publishDate',null, ['data-format'=>'dd-MM-yyyy', 'class'=>'form-control add-on', 'placeholder'=>'Publish Date']) !!}
-</div>
-{!! Form::text('tag',null,['placeholder'=>'Tag','class'=>'form-control']) !!}
-{!! Form::text('coverImage',null,['placeholder'=>'Cover Image','class'=>'form-control']) !!}
-{!! Form::text('vendor',null,['placeholder'=>'Vendor','class'=>'form-control']) !!}
-{!! Form::checkbox('Active'); !!} Active<br/>
+<div class="col-md-12">
+{!! Form::open(['url' => 'admin/products','class'=>'form-horizontal','files' => true]) !!}
 
-{!! Form::submit('Save') !!}
+<div class="form-group col-md-6">
+    {!! Form::label('SKU') !!}
+    {!! Form::text('sku',null,['placeholder'=>'Enter a unique alpha numeric value','class'=>'form-control','id'=>'sku']) !!}
+</div>
+<div class="form-group col-md-6" style="margin-left: 15px">
+    {!! Form::label('ALias') !!}
+    {!! Form::text('alias',null,['placeholder'=>'Alias','class'=>'form-control']) !!}
+</div>
+<div class="form-group col-md-6">
+    {!! Form::label('Price') !!}
+    {!! Form::text('price',null,['placeholder'=>'Enter product price','class'=>'form-control']) !!}
+</div>
+<div class="form-group col-md-6" style="margin-left: 15px">
+    {!! Form::label('Currency') !!}
+    {!! Form::select('currency',['Euro'=>'€ - Euro','USD'=>'$ - USD'],null,['class'=>'form-control']) !!}
+</div>
+<div class="form-group col-md-12">
+    {!! Form::label('Title') !!}
+    {!! Form::text('title',null,['placeholder'=>'Enter title of the product','class'=>'form-control']) !!}
+</div>
+<div class="form-group col-md-12">
+    {!! Form::label('Description') !!}
+    {!! Form::textarea('description',null,['size'=>'80x10','id'=>'description']) !!}
+</div>
+<div class="form-group col-md-4">
+    {!! Form::label('Vendor') !!}
+    {!! Form::select('vendor',['soma'=>'soma','suhan'=>'suhan'],null,['class'=>'form-control']) !!}
+</div>
+<div class="form-group col-md-4" style="margin-left: 15px">
+    {!! Form::label('Tag') !!}
+    {!! Form::text('tag',null,['placeholder'=>'Tag','class'=>'form-control']) !!}
+</div>
+<div id="datetimepicker5" class="col-md-4" style="margin-left: 15px">
+    <div class="form-group">
+        {!! Form::label('Publish Date') !!}
+        {!! Form::text('publishDate',null, ['data-format'=>'dd-MM-yyyy', 'class'=>'form-control add-on', 'placeholder'=>'Publish Date']) !!}
+    </div>
+</div>
+<div class="form-group col-md-12">
+    {!! Form::label('Cover Image') !!}
+    {!! Form::file('coverImage'); !!}
+</div>
+<div class="form-group col-md-12">
+    {!! Form::label('Images') !!}
+    {!! Form::file('image1'); !!}
+    {!! Form::file('image2'); !!}
+    {!! Form::file('image3'); !!}
+    {!! Form::file('image4'); !!}
+    {!! Form::file('image5'); !!}
+</div>
+<div class="form-group col-md-12">
+    <label>
+        {!! Form::checkbox('Active') !!} Active<br/>
+    </label>
+</div>
+<div class="form-group col-md-12">
+    {!! Form::submit('Save',['class'=>'btn btn-default']) !!}
+</div>
 
 {!! Form::close() !!}
+</div>
 @stop
 
 @section('script')

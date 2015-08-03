@@ -14,7 +14,9 @@
     @yield('sidebar')
 </div>
 
-<div class="col-md-offset-2 col-md-10 navbar-fix">
-    @yield('body')
+<div class="container-fluid">
+    <div class="col-md-offset-2 col-md-10 navbar-fix">
+        @yield('body')
+    </div>
 </div>
 @stop

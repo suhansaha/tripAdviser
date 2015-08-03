@@ -14,19 +14,19 @@ class authController extends Controller
 
         if (Auth::attempt(['email' => $request->email,'password'=>$request->password])) {
             // Authentication passed...
-            return redirect()->intended();
+            return Redirect::back();
         }
 
         $showModal = 'true';
         $message = '';
-        return view('homepage',['showModal'=>$showModal,'message'=>$message]);
+        return Redirect::back()->with('showModal',$showModal)->with('message',$message);
     }
     public function callback($driver, \App\AuthenticateUser $authenticateUser, Request $request){
         //return "Login using ".$driver;
         return $authenticateUser->execute($request->has('code'), $driver, $this);
     }
     public function userHasLoggedIn($user){
-        return redirect()->intended();
+        return redirect()->back()->with('showModal',true)->with('message','Welcome '.$user->firstName.',</br>Please click \'Book Now\' button to do your booking');
 
     }
 

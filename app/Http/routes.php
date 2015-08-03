@@ -21,7 +21,7 @@ Route::post('/', function () {
 
 Route::get('/logout', function () {
     Auth::logout();
-    return view('homepage',['showModal'=>'false']);
+    return Redirect::back();
 });
 
 Route:get('product/{alias}',function($alias){
@@ -48,7 +48,7 @@ Route::get('order/{package}',function($package){
         $message .="Your Sincerely,<br/>TripAdviser Team";
 
     }
-   return view('homepage',['showModal'=>$showModal,'message'=>$message]);
+   return Redirect::back()->with('showModal',$showModal)->with('message',$message);
 });
 
 Route::resource('admin/products','productController',['only'=>['store','create']]);

@@ -50,7 +50,7 @@
 
                         <div style="background-color:#F0F0F5;padding:10px">
                             <h4 class="modal-title">Thanks for Booking!</h4><br/>
-                            {!! isset($message)?$message:'' !!}
+                            {!! Session::get('message','') !!}
                         </div>
                     @endif
                 </div>
@@ -73,7 +73,7 @@
                 pickTime: false
             });
         });
-        var showModal = {!! isset($showModal)? $showModal : 'false' !!};
+        var showModal = {!! Session::get('showModal','false') !!};
 
         $('document').ready(function(){
             if(showModal)
