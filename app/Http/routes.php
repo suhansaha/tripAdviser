@@ -50,7 +50,7 @@ Route::get('order/{package}',function($package){
         $message .= "<p>We are delighted to hear that you are interested for the package \"".$lead->package."\".</p>";
         $message .= "<p>However we are not yet ready to provide you the gala experience we promise to our customer.</p>";
         $message .= "<p>We promise that we will get back to you via your email id ".Auth::user()->email." as soon as we are ready.</p>";
-        $message .="Your Sincerely,<br/>TripAdviser Team";
+        $message .="Your Sincerely,<br/>Festival N' Feast Team";
 
     }
    return Redirect::back()->with('showModal',$showModal)->with('message',$message);
