@@ -25,7 +25,12 @@ Route::get('/logout', function () {
 });
 
 Route:get('product/{alias}',function($alias){
-   return view('product',['alias'=>$alias]);
+    $text = \App\stringList::where('alias',$alias)->first();
+    if($text!=null){
+        return view('product',['text'=>$text]);
+    }else{
+        abort('404');
+    }
 });
 
 Route::get('order/{package}',function($package){

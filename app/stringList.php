@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class stringList extends Model
 {
     protected $table = 'stringList';
-    protected $fillable = ['title','description','productId','languageId'];
+    protected $fillable = ['title','description','condition','productId','languageId'];
     public $timestamps = false;
 
     public function language()

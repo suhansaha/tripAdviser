@@ -23,6 +23,7 @@ class Linguistic extends Migration
             $table->string('alias')->unique();
             $table->string('title');
             $table->text('description')->nullable();
+            $table->text('condition')->nullable();
             $table->integer('productId')->unsigned();
             $table->integer('languageId')->unsigned();
             $table->foreign('productId')->references('id')->on('products')->onDelete('cascade');

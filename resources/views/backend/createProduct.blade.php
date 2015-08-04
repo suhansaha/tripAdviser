@@ -4,6 +4,20 @@
 
 @section('body')
 <div class="col-md-12">
+<?php
+    $currencies = [];
+    foreach(\App\currencies::all() as $var){
+        $currencies[$var->id] = $var->symbol.' - '.$var->name;
+    }
+    $vendors = [];
+    foreach(\App\User::all() as $var){
+        $vendors[$var->id] = $var->firstName.' '.$var->lastName;
+    }
+    $cities = [];
+    foreach(\App\cities::all() as $var){
+        $cities[$var->id] = $var->name.' - '.$var->country;
+    }
+?>
 {!! Form::open(['url' => 'admin/products','class'=>'form-horizontal','files' => true]) !!}
 
 <div class="form-group col-md-6">
@@ -20,7 +34,11 @@
 </div>
 <div class="form-group col-md-6" style="margin-left: 15px">
     {!! Form::label('Currency') !!}
-    {!! Form::select('currency',['Euro'=>'€ - Euro','USD'=>'$ - USD'],null,['class'=>'form-control']) !!}
+    {!! Form::select('currency',$currencies,null,['class'=>'form-control']) !!}
+</div>
+<div class="form-group col-md-12">
+    {!! Form::label('Price Condition') !!}
+    {!! Form::text('condition',null,['placeholder'=>'Enter additional condition for price','class'=>'form-control']) !!}
 </div>
 <div class="form-group col-md-12">
     {!! Form::label('Title') !!}
@@ -32,11 +50,11 @@
 </div>
 <div class="form-group col-md-4">
     {!! Form::label('Vendor') !!}
-    {!! Form::select('vendor',['soma'=>'soma','suhan'=>'suhan'],null,['class'=>'form-control']) !!}
+    {!! Form::select('vendor',$vendors,null,['class'=>'form-control']) !!}
 </div>
 <div class="form-group col-md-4" style="margin-left: 15px">
     {!! Form::label('City') !!}
-    {!! Form::select('city',['Bangalore'=>'Bangalore','Munich'=>'Munich'],null,['class'=>'form-control']) !!}
+    {!! Form::select('city',$cities,null,['class'=>'form-control']) !!}
 </div>
 <div id="datetimepicker5" class="col-md-4" style="margin-left: 15px">
     <div class="form-group">

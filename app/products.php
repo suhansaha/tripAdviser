@@ -42,16 +42,16 @@ class products extends Model
         return $this->belongsTo('App\User','vendorId');
     }
     public function categories(){
-        return $this->belongsToMany('App\categories','productCategory','categoryId','productId');
+        return $this->belongsToMany('App\categories','productCategory','productId','categoryId');
     }
     public function tags(){
         return $this->belongsToMany('App\tags','productTag','tagId','productId');
     }
     public function orders(){
-        return $this->belongsToMany('App\orders','productOrder','orderId','productId');
+        return $this->belongsToMany('App\orders','productOrder','productId','orderId');
     }
     public function images(){
-        return $this->belongsToMany('App\images','productOrder','imageId','productId');
+        return $this->belongsToMany('App\images','productImages','productId','imageId');
     }
 
 }

@@ -24,7 +24,7 @@
                 <div class="carousel-caption">
                     <h1>Enjoy Oktoberfest at Munich</h1>
                     <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p><a class="btn btn-lg btn-primary" href="/product/oktoberfest" role="button">Book Now</a></p>
+                    <p><a class="btn btn-lg btn-primary" href="/product/oktoberfest-tour" role="button">Book Now</a></p>
                 </div>
             </div>
         </div>
