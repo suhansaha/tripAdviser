@@ -23,8 +23,8 @@ class adminController extends Controller
      */
     public function index($tableName)
     {
-        $table = ucfirst($tableName);
-        $dbTable =  'App\\'.$table;
+        //$table = ucfirst($tableName);
+        $dbTable =  'App\\'.$tableName;
 
         if (class_exists($dbTable)) {
             $tableData = $dbTable::all();
@@ -43,8 +43,8 @@ class adminController extends Controller
      */
     public function create($tableName)
     {
-        $table = ucfirst($tableName);
-        $dbTable =  'App\\'.$table;
+        //$table = ucfirst($tableName);
+        $dbTable =  'App\\'.$tableName;
 
         if (class_exists($dbTable)) {
             $tableData = $dbTable::all();

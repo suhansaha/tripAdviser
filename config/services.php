@@ -37,12 +37,12 @@ return [
     'facebook' => [
         'client_id' => env('FB_CLIENT_ID'),
         'client_secret' => env('FB_SECRET'),
-        'redirect' => 'http://tripadviser.com/facebook/callback',
+        'redirect' => 'http://festivalnfeast.com/facebook/callback',
     ],
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_SECRET'),
-        'redirect' => 'http://tripadviser.com/google/callback',
+        'redirect' => 'http://festivalnfeast.com/google/callback',
     ],
 
 ];
