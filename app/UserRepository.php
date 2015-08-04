@@ -18,7 +18,8 @@ class UserRepository{
         $user->firstName = $firstName;
         $user->lastName = $lastName;
         $user->avatar = $userData->getAvatar();
-        $user->roleId = 2;//2 = guest
+        if($user->roleId == null)
+	    $user->roleId = 2;//2 = guest
 
         switch($driver){
             case 'facebook':
