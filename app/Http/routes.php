@@ -56,8 +56,10 @@ Route::get('order/{package}',function($package){
    return Redirect::back()->with('showModal',$showModal)->with('message',$message);
 });
 
-Route::resource('admin/products','productController',['only'=>['store','create']]);
+Route::resource('admin/products','productController',['only'=>['store','create','edit','update']]);
 Route::resource('admin/{table}','adminController',['only'=>['index','store','create']]);
+Route::get('admin/{table}/{id}/edit','adminController@edit');
+Route::put('admin/{table}/{id}','adminController@update');
 //Route::resource('admin/{table}','adminController');
 Route::get('admin/{table}/{id}','adminController@show');
 Route::get('admin/{table}/{id}/{field}','adminController@showField');

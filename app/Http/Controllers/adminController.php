@@ -101,7 +101,7 @@ class adminController extends Controller
         }else{
             $tableClass = "\\App\\" . $table;
         }
-        return $tableClass::find($id)->load('role');
+        return $tableClass::find($id);
     }
     /**
      * Display the specified resource.
@@ -135,9 +135,22 @@ class adminController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($tableName,$id)
+    {        
+        $dbTable =  'App\\'.$tableName;
+
+        if (class_exists($dbTable)) {
+            $tableData = $dbTable::find($id);
+            $dbModel = new $dbTable;
+            $fillables = $dbModel->getFillable();
+            if($tableData != null){
+              return view('backend.update',["table" => $tableData,"tableName"=>$tableName,"fillables"=>$fillables]);
+            }else{
+              return view('backend.create',["table" => $tableData,"tableName"=>$tableName,"fillables"=>$fillables]);
+            }
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -147,9 +160,29 @@ class adminController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $tableName, $id)
     {
-        //
+        $form = $request->all();
+        $tableName = "App\\".$request->tableName;
+
+        $item = $tableName::firstOrNew(['id'=>$id]);
+        foreach($form as $field=>$value){
+            if($item->isFillable($field)) {
+                if($field == 'password')
+                    $item->$field = bcrypt($value);
+                else
+                    $item->$field = $value;
+            }
+        }
+        $item->save();
+
+        try{
+            //$item->save();
+        }catch(\Illuminate\Database\QueryException $e){
+
+        }
+        
+        return  $this->index($request->tableName);
     }
 
     /**

@@ -84,5 +84,8 @@ a.btn-book-now:hover{
     background-color: black;
     border-right: 4px solid red;
 }
-
+.sidebar-menu >a{
+  color:lightgrey;
+  text-decoration:none;
+}
 html,body { height: 100%; margin: 0px; padding: 0px; background-color: whitesmoke}

@@ -10,9 +10,12 @@
     <div class="col-md-10 col-md-offset-1 navbar-fix">
         <div class="col-sm-9 col-md-9 content-section">
             <h2>{!! $text->title !!}</h2>
+            @if($text->product->coverImageId !=null )
             <div class="col-sm-12 product-gallery text-center">
                 <img style="max-width:100%;height:100%" src="/{!! $text->product->coverImage->url !!}" alt="My Image file"></img>
             </div>
+            @endif
+            
             @foreach($text->product->images as $image)
             <a href="/{!! $image->url !!}"  data-lightbox="oktoberfest"><img data-lightbox="oktoberfest" class="thumbnail visible-md-inline visible-lg-inline col-md-2" src="/{!! $image->url !!}" alt="{!! $image->title !!}"></img></a>
             @endforeach
