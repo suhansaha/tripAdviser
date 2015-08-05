@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a href="javascript:alert('You have 0 item in your cart');" class="btn navbar-toggle collapsed glyphicon glyphicon-shopping-cart"></a>
-            <a class="navbar-brand" href="/"><img style="position:absolute;top:1px;left:0px;height:49px;"  alt="Brand" src="{!! asset('images/logo.png') !!}"></a>
+            <a class="navbar-brand" href="/"><img style="position:absolute;top:1px;left:0px;height:49px;"  alt="Brand" src="{!! asset('images/logo1.png') !!}"><img style="position:absolute;top:1px;left:60px;height:49px;"  alt="Brand2" src="{!! asset('images/logo2.png') !!}"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->

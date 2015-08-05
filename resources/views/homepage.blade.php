@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Welcome to Festival N' Fest')
+@section('title', 'Welcome to Festival N\' Fest')
 
 @section('header')
     <link href="{!! asset('css/carousel.css') !!}" rel="stylesheet">

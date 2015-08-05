@@ -23,8 +23,8 @@
 
             <div class="col-sm-12 sidebar-tab sidebar-tab-special visible-xs-block text-center">
                 <a class="btn-book-now text-uppercase" href="/order/oktoberfest">Book Now</a><br>
-                <div style="font-weight:500;border-bottom: 1px solid lightgray;font-size: 1.2em">From <span style="color:black;font-size: 1.5em; font-weight: 600">{!! $text->product->price.' '.$text->product->currency->symbol !!}</span></div>
-                <div style="font-size: 0.8em">{!! $text->condition !!}</div>
+                <!--<div style="font-weight:500;border-bottom: 1px solid lightgray;font-size: 1.2em">From <span style="color:black;font-size: 1.5em; font-weight: 600">{!! $text->product->price.' '.$text->product->currency->symbol !!}</span></div>
+                <div style="font-size: 0.8em">{!! $text->condition !!}</div>-->
             </div>
             <div class="product-body">
                 {!! $text->description !!}
@@ -33,8 +33,8 @@
         <div class="col-sm-3 col-md-3 content-sidebar text-center"  style="margin-top:75px">
             <div class="col-sm-12 sidebar-tab sidebar-tab-special">
                 <a class="btn-book-now text-uppercase" href="/order/oktoberfest">Book Now</a><br>
-                <div style="font-weight:500;border-bottom: 1px solid lightgray;font-size: 1.2em">From <span style="color:black;font-size: 1.5em; font-weight: 600">{!! $text->product->price.' '.$text->product->currency->symbol !!}</span></div>
-                <div style="font-size: 0.8em">{!! $text->condition !!}</div>
+                <!--<div style="font-weight:500;border-bottom: 1px solid lightgray;font-size: 1.2em">From <span style="color:black;font-size: 1.5em; font-weight: 600">{!! $text->product->price.' '.$text->product->currency->symbol !!}</span></div>
+                <div style="font-size: 0.8em">{!! $text->condition !!}</div>-->
             </div>
             <div class="col-sm-12 sidebar-tab text-left">
                 <span class="sidebar-tab-title">We Promise</span>
